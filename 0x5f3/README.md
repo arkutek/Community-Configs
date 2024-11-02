@@ -1,10 +1,15 @@
-This config will populate the following:
-
-- !Suggested (random, recently added|released, suggested, trending, popular, top-rated, most watched)
+#### This config will populate the following:
+```
+- !Suggested (random, recently added|released, recommended, suggested, trending, popular, top-rated)
+- Unwatched (random, recommended, suggested, popular, top-rated)
+- !Watched (most watched daily|weekly|monthly|yearly)
 - !Seasonal *
 - Parental
+- Family
 - Documentaries
 - Stand-up *
+- Sports
+- Anime
 - Awards
 - !Year (top-rated)
 - !Decades (top-rated)
@@ -15,43 +20,35 @@ This config will populate the following:
 - TMDB collections *
 - Network ^
 
-( ! = enabled by default)
-( * = movies only )
-( ^ = shows only )
-
-For more details on what each section contains: [movies](MOVIES.md) | [shows](SHOWS.md)
-<br/>
-
-**Requirements:**
-
- - APP/API keys for: mdblist, tmdb, trakt
-
-**Install:**
-
-clone into PMM's root directory:
+(! = enabled by default)
+(* = movies only)
+(^ = shows only)
 ```
-git clone https://github.com/0x5f3/pmm.config config
+###### For more details on what each section contains: [movies](MOVIES.md) | [shows](SHOWS.md)
+#### Requirements:
 ```
+ - API keys for: mdblist, tmdb, trakt
+```
+#### Install:
+```
+git clone --recursive https://github.com/0x5f3/kometa.config config
+```
+#### Usage:
 
-**Usage:**
-
-The initial process for populating collections:
+###### The initial process for populating collections:
 ```
-python plex_meta_manager.py --config config/movie.yml --collections-only --run --ignore-schedules
-python plex_meta_manager.py --config config/show.yml --collections-only --run --ignore-schedules
+docker run --rm -it -v ./config:/config kometateam/kometa:nightly --config config/config.yml --run --ignore-schedules
 ```
-Following a successful initial run:
-
+###### Following a successful initial run:
 ```
-python plex_meta_manager.py --config config/movie.yml --collections-only --run
-python plex_meta_manager.py --config config/show.yml --collections-only --run
+docker run --rm -d -v ./config:/config kometateam/kometa:nightly --config config/config.yml --run
 ```
-<br/>
-A successful run will result in something similar to this:
-<br/>
-<br/>
-
-![movies](https://raw.githubusercontent.com/0x5f3/pmm.config/main/assets/_/_movies.png)
-<br/>
-  
-![shows](https://raw.githubusercontent.com/0x5f3/pmm.config/main/assets/_/_shows.png)
+###### Notes:
+``
+With the parental configuration, there is a 'Parental' label added to their collections and all items included. The label can be used with 'Allow Only Labels' in a user's restriction settings.
+``
+#
+#
+###### A successful run will result in something similar to this:
+![movies](https://raw.githubusercontent.com/0x5f3/kometa.config/collections/_/movies.png)
+![shows](https://raw.githubusercontent.com/0x5f3/kometa.config/collections/_/shows.png)

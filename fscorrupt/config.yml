@@ -1,30 +1,103 @@
 ## This file is a template remove the .template to use the file
 
 libraries:
+  4K TV Shows:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
+    - file: config/TVShows.yml
+    #- file: config/Genre.yml
+    overlay_files:
+    #- reapply_overlays: true
+    - default: network
+      template_variables:
+        builder_level: season
+        vertical_position: bottom
+        horizontal_position: center
+        horizontal_offset: 30
+        vertical_offset: 50
+        back_color: '#00000000'
+    - default: languages
+      template_variables:
+        builder_level: episode
+        overlay_limit: 5
+        horizontal_position: left
+        vertical_position: bottom
+        style: square
+        back_color: '#00000000'
+        font_color: '#00000000'
+        back_width: 102
+        text: ''
+        final_name: <<key>>
+    - default: status
+      template_variables:
+        horizontal_align: center
+        vertical_align: top
+        vertical_offset: 0
+        horizontal_offset: 0
+        back_height: 80
+        back_width: 1100
+        font: config/fonts/Avenir_95_Black.ttf
+        font_size: 60
+        font_color_airing: '#27C24C'
+        font_color_returning: '#FFA500'
+        font_color_canceled: '#ED1F1F'
+        font_color_ended: '#FF0000'
+        back_color: '#FFFFFF'
+    - default: runtimes
+      template_variables:
+        builder_level: episode
+        horizontal_align: right
+        back_color: '#00000000'
+        back_height: 80
+        vertical_offset: 20
+        horizontal_offset: 18
+        text: ''
+        back_width: 205
+    - remove_overlays: false
+    - file: config/overlays_tv.yml
+      template_variables:
+      # Which overlay(s) should be used?
+      # Posters
+        4K: true
+        4K_banner: true
+    settings:
+      asset_directory: /assets/4K TV Shows
+      prioritize_assets: true
+    operations:
+      assets_for_all: true
   4K Movies:
-    schedule: hourly(11),hourly(19)
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
     #schedule: hourly(9),hourly(19)
-    metadata_path:
+    collection_files:
     - file: config/Movies.yml
     #- file: config/collections.yml
-    overlay_path:
-    - pmm: commonsense
+    overlay_files:
+    - default: commonsense
       template_variables:
         vertical_offset: 37
         horizontal_offset: 255
         back_width: 230
-    - pmm: languages
+        back_color: '#00000000'
+    - default: languages
       template_variables:
         overlay_limit: 5
         horizontal_position: left
         vertical_position: bottom
         style: square
-        back_color: '#00000099'
-    - file: config/runtimes.yml
+        back_color: '#00000000'
+        font_color: '#00000000'
+        text: ''
+        final_name: <<key>>
+    - default: runtimes
       template_variables:
         vertical_offset: 37
         horizontal_align: center
         horizontal_offset: 140
+        text: ''
+        back_width: 205
+        back_color: '#00000000'
     - remove_overlays: false
     - file: config/overlays_movies.yml
       template_variables:
@@ -32,32 +105,44 @@ libraries:
       # Posters
         4K_banner: true
         4K: false
+    settings:
+      asset_directory: /assets/4K Movies
+      prioritize_assets: true
     operations:
       mass_content_rating_update: mdb_commonsense
+      assets_for_all: true
   Movies:
-    schedule: hourly(11),hourly(19)
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
     #schedule: hourly(9),hourly(19)
-    metadata_path:
+    collection_files:
     - file: config/Movies.yml
     #- file: config/collections.yml
-    overlay_path:
-    - pmm: commonsense
+    overlay_files:
+    - default: commonsense
       template_variables:
         vertical_offset: 37
         horizontal_offset: 255
         back_width: 230
-    - pmm: languages
+        back_color: '#00000000'
+    - default: languages
       template_variables:
         overlay_limit: 5
         horizontal_position: left
         vertical_position: bottom
         style: square
-        back_color: '#00000099'
-    - file: config/runtimes.yml
+        back_color: '#00000000'
+        font_color: '#00000000'
+        text: ''
+        final_name: <<key>>
+    - default: runtimes
       template_variables:
         vertical_offset: 37
         horizontal_align: center
         horizontal_offset: 140
+        text: ''
+        back_width: 205
+        back_color: '#00000000'
     - remove_overlays: false
     - file: config/overlays_movies.yml
       template_variables:
@@ -65,31 +150,43 @@ libraries:
       # Posters
         4K_banner: false
         4K: false
+    settings:
+      asset_directory: /assets/Movies
+      prioritize_assets: true
     operations:
       mass_content_rating_update: mdb_commonsense
+      assets_for_all: true
   Kids Movies:
-    schedule: hourly(11),hourly(19)
-    metadata_path:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
     - file: config/Movies.yml
     #- file: config/Genre.yml
-    overlay_path:
-    - pmm: commonsense
+    overlay_files:
+    - default: commonsense
       template_variables:
         vertical_offset: 37
         horizontal_offset: 255
         back_width: 230
-    - pmm: languages
+        back_color: '#00000000'
+    - default: languages
       template_variables:
         overlay_limit: 5
         horizontal_position: left
         vertical_position: bottom
         style: square
-        back_color: '#00000099'
-    - file: config/runtimes.yml
+        back_color: '#00000000'
+        font_color: '#00000000'
+        text: ''
+        final_name: <<key>>
+    - default: runtimes
       template_variables:
         vertical_offset: 37
         horizontal_align: center
         horizontal_offset: 140
+        text: ''
+        back_width: 205
+        back_color: '#00000000'
     - remove_overlays: false
     - file: config/overlays_movies.yml
       template_variables:
@@ -97,31 +194,43 @@ libraries:
       # Posters
         4K_banner: false
         4K: false
+    settings:
+      asset_directory: /assets/Kids Movies
+      prioritize_assets: true
     operations:
       mass_content_rating_update: mdb_commonsense
+      assets_for_all: true
   Anime:
-    schedule: hourly(11),hourly(19)
-    metadata_path:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
     - file: config/Movies.yml
     #- file: config/Genre.yml
-    overlay_path:
-    - pmm: commonsense
+    overlay_files:
+    - default: commonsense
       template_variables:
         vertical_offset: 37
         horizontal_offset: 255
         back_width: 230
-    - pmm: languages
+        back_color: '#00000000'
+    - default: languages
       template_variables:
         overlay_limit: 5
         horizontal_position: left
         vertical_position: bottom
         style: square
-        back_color: '#00000099'
-    - file: config/runtimes.yml
+        back_color: '#00000000'
+        font_color: '#00000000'
+        text: ''
+        final_name: <<key>>
+    - default: runtimes
       template_variables:
         vertical_offset: 37
         horizontal_align: center
         horizontal_offset: 140
+        text: ''
+        back_width: 205
+        back_color: '#00000000'
     - remove_overlays: false
     - file: config/overlays_movies.yml
       template_variables:
@@ -129,39 +238,65 @@ libraries:
       # Posters
         4K_banner: false
         4K: false
+    settings:
+      asset_directory: /assets/Anime
+      prioritize_assets: true
     operations:
       mass_content_rating_update: mdb_commonsense
+      assets_for_all: true
   TV Shows:
-    schedule: hourly(11)
-    metadata_path:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
     - file: config/TVShows.yml
     #- file: config/Genre.yml
-    overlay_path:
+    overlay_files:
     #- reapply_overlays: true
-    - pmm: languages
+    - default: network
       template_variables:
-        overlay_level: episode
-        overlay_limit: 5
-        horizontal_position: right
+        builder_level: season
         vertical_position: bottom
-    - pmm: status
+        horizontal_position: center
+        horizontal_offset: 30
+        vertical_offset: 50
+        back_color: '#00000000'
+    - default: languages
+      template_variables:
+        builder_level: episode
+        overlay_limit: 5
+        horizontal_position: left
+        vertical_position: bottom
+        style: square
+        back_color: '#00000000'
+        font_color: '#00000000'
+        back_width: 102
+        text: ''
+        final_name: <<key>>
+    - default: status
       template_variables:
         horizontal_align: center
         vertical_align: top
         vertical_offset: 0
         horizontal_offset: 0
-        back_height: 85
+        back_height: 80
         back_width: 1100
         font: config/fonts/Avenir_95_Black.ttf
         font_size: 60
-        back_color_airing: '#016920'
-        back_color_returning: '#81007F'
-        back_color_canceled: '#ed1f1f'
-        back_color_ended: '#000847'
-    - file: config/runtimes.yml
+        font_color_airing: '#27C24C'
+        font_color_returning: '#FFA500'
+        font_color_canceled: '#ED1F1F'
+        font_color_ended: '#FF0000'
+        back_color: '#FFFFFF'
+    - default: runtimes
       template_variables:
-        overlay_level: episode
-        horizontal_align: left
+        builder_level: episode
+        horizontal_align: right
+        back_color: '#00000000'
+        back_height: 80
+        vertical_offset: 20
+        horizontal_offset: 18
+        text: ''
+        back_width: 205
     - remove_overlays: false
     - file: config/overlays_tv.yml
       template_variables:
@@ -169,36 +304,63 @@ libraries:
       # Posters
         4K: false
         4K_banner: false
+    settings:
+      asset_directory: /assets/TV Shows
+      prioritize_assets: true
+    operations:
+      assets_for_all: true
   Kids Shows:
-    schedule: hourly(11)
-    metadata_path:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
     - file: config/KidsShows.yml
-    overlay_path:
+    overlay_files:
     #- reapply_overlays: true
-    - pmm: languages
+    - default: network
       template_variables:
-        overlay_level: episode
-        overlay_limit: 5
-        horizontal_position: right
+        builder_level: season
         vertical_position: bottom
-    - pmm: status
+        horizontal_position: center
+        horizontal_offset: 30
+        vertical_offset: 50
+        back_color: '#00000000'
+    - default: languages
+      template_variables:
+        builder_level: episode
+        overlay_limit: 5
+        horizontal_position: left
+        vertical_position: bottom
+        style: square
+        back_color: '#00000000'
+        font_color: '#00000000'
+        back_width: 102
+        text: ''
+        final_name: <<key>>
+    - default: status
       template_variables:
         horizontal_align: center
         vertical_align: top
         vertical_offset: 0
         horizontal_offset: 0
-        back_height: 85
+        back_height: 80
         back_width: 1100
         font: config/fonts/Avenir_95_Black.ttf
         font_size: 60
-        back_color_airing: '#016920'
-        back_color_returning: '#81007F'
-        back_color_canceled: '#ed1f1f'
-        back_color_ended: '#000847'
-    - file: config/runtimes.yml
+        font_color_airing: '#27C24C'
+        font_color_returning: '#FFA500'
+        font_color_canceled: '#ED1F1F'
+        font_color_ended: '#FF0000'
+        back_color: '#FFFFFF'
+    - default: runtimes
       template_variables:
-        overlay_level: episode
-        horizontal_align: left
+        builder_level: episode
+        horizontal_align: right
+        back_color: '#00000000'
+        back_height: 80
+        vertical_offset: 20
+        horizontal_offset: 18
+        text: ''
+        back_width: 205
     - remove_overlays: false
     - file: config/overlays_tv.yml
       template_variables:
@@ -206,36 +368,67 @@ libraries:
       # Posters
         4K_banner: false
         4K: false
+    settings:
+      asset_directory: /assets/Kids Shows
+      prioritize_assets: true
+    operations:
+      assets_for_all: true
   Anime Shows:
-    schedule: hourly(11)
-    metadata_path:
+    schedule: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    schedule_overlays: hourly(06),hourly(10),hourly(14),hourly(18),hourly(22)
+    collection_files:
     - file: config/AnimeShows.yml
-    overlay_path:
+    overlay_files:
     #- reapply_overlays: true
-    - pmm: languages
+    - default: network
       template_variables:
-        overlay_level: episode
-        overlay_limit: 5
-        horizontal_position: right
+        builder_level: season
         vertical_position: bottom
-    - pmm: status
+        horizontal_position: center
+        horizontal_offset: 30
+        vertical_offset: 50
+        back_color: '#00000000'
+    - default: languages
+      template_variables:
+        builder_level: episode
+        overlay_limit: 5
+        horizontal_position: left
+        vertical_position: bottom
+        style: square
+        back_color: '#00000000'
+        font_color: '#00000000'
+        back_width: 102
+        text: ''
+        final_name: <<key>>
+    - default: status
       template_variables:
         horizontal_align: center
         vertical_align: top
         vertical_offset: 0
         horizontal_offset: 0
-        back_height: 85
+        back_height: 80
         back_width: 1100
         font: config/fonts/Avenir_95_Black.ttf
         font_size: 60
-        back_color_airing: '#016920'
-        back_color_returning: '#81007F'
-        back_color_canceled: '#ed1f1f'
-        back_color_ended: '#000847'
-    - file: config/runtimes.yml
+        font_color_airing: '#27C24C'
+        font_color_returning: '#FFA500'
+        font_color_canceled: '#ED1F1F'
+        font_color_ended: '#FF0000'
+        back_color: '#FFFFFF'
+        #back_color_airing: '#016920'
+        #back_color_returning: '#81007F'
+        #back_color_canceled: '#ed1f1f'
+        #back_color_ended: '#000847'
+    - default: runtimes
       template_variables:
-        overlay_level: episode
-        horizontal_align: left
+        builder_level: episode
+        horizontal_align: right
+        back_color: '#00000000'
+        back_height: 80
+        vertical_offset: 20
+        horizontal_offset: 18
+        text: ''
+        back_width: 205
     - remove_overlays: false
     - file: config/overlays_tv.yml
       template_variables:
@@ -243,6 +436,11 @@ libraries:
       # Posters
         4K_banner: false
         4K: false
+    settings:
+      asset_directory: /assets/Anime Shows
+      prioritize_assets: true
+    operations:
+      assets_for_all: true
 playlist_files:
 - file: config/playlist.yml
   template_variables:
@@ -252,42 +450,48 @@ playlist_files:
 settings:                                       # Can be individually specified per library as well
   cache: true
   cache_expiration: 60
-  asset_directory: config/assets
-  asset_folders: false
-  assets_for_all: false
-  sync_mode: sync
-  show_unmanaged: false
+  asset_directory: /assets
+  asset_folders: true
+  asset_depth: 1
   create_asset_folders: false
-  delete_below_minimum: false
-  tvdb_language: default
-  show_missing_assets: false
-  minimum_items: 1
-  asset_depth: 0
+  prioritize_assets: true
   dimensional_asset_rename: false
   download_url_assets: false
-  show_missing_season_assets: false
+  show_missing_season_assets: true
+  show_missing_episode_assets: false
+  show_asset_not_needed: false
+  sync_mode: sync
   default_collection_order:
+  minimum_items: 1
+  delete_below_minimum: false
   delete_not_scheduled: false
+  run_again_delay: 0
+  missing_only_released: true
+  show_unconfigured: true
+  show_unmanaged: false
+  show_filtered: false
+  show_options: true
+  show_missing: true
   only_filter_missing: false
-  show_options: false
+  show_missing_assets: true
+  save_report: false
+  tvdb_language: 
   ignore_ids:
   ignore_imdb_ids:
-  verify_ssl: true
-  playlist_sync_to_users: all
-  show_missing_episode_assets: false
-  show_asset_not_needed: true
   item_refresh_delay: 0
-  custom_repo:
-  prioritize_assets: false
+  playlist_sync_to_users: all
   playlist_report: false
+  custom_repo:
+  verify_ssl: true
   check_nightly: false
-  show_unconfigured: true
-  playlist_exclude_users: 
-  run_again_delay: 0
-  missing_only_released: false
-  show_filtered: false
-  show_missing: true
-  save_report: false
+  playlist_exclude_users: Louisa, Peter
+  run_order:
+  - operations
+  - metadata
+  - collections
+  - overlays
+  overlay_artwork_filetype: jpg   
+  overlay_artwork_quality: 75
 plex:                                           # Can be individually specified per library as well
   url: http://plex:32400
   token: 
@@ -321,7 +525,7 @@ radarr:                                         # Can be individually specified 
   monitor: false
   availability: announced
   quality_profile: 1080p
-  tag: pmm
+  tag: kometa
   search: false
   add_existing: false
   radarr_path:
@@ -339,7 +543,7 @@ sonarr:                                         # Can be individually specified 
   language_profile: German
   series_type: standard
   season_folder: true
-  tag: pmm
+  tag: kometa
   search: false
   cutoff_search: false
   add_existing: false
@@ -357,7 +561,7 @@ trakt:
     expires_in: 7889237
     refresh_token: 
     scope: public
-    created_at: 1696698036
+    created_at: 1704621604
   pin:
 mdblist:
   apikey: 
